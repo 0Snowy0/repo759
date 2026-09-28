@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
     const auto start = std::chrono::high_resolution_clock::now();
     scan(arr, output, n);
     const auto end = std::chrono::high_resolution_clock::now();
-    const std::chrono::duration<double> elapsed = end - start;
+    const std::chrono::duration<double, std::milli> elapsed = end - start;
 
     std::cout << elapsed.count() << std::endl;
     std::cout << output[0] << std::endl;
