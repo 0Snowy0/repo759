@@ -27,10 +27,10 @@ void convolve(const float *image, float *output, std::size_t n, const float *mas
     const std::ptrdiff_t halfM = (M - 1) / 2;
 
     for (std::ptrdiff_t x = 0; x < N; x++) {
-        for (std::ptrdiff_t y = 0; y < M; y++) {
+        for (std::ptrdiff_t y = 0; y < N; y++) {
             float sum = 0.0f;
             for (std::ptrdiff_t i = 0; i < M; i++) {
-                for (std::ptrdiff_t j = 0; j < M; i++) {
+                for (std::ptrdiff_t j = 0; j < M; j++) {
                     sum += mask[i*M+j] * f(image, N, x + i - halfM, y + j - halfM);
                 }
             }
