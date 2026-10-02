@@ -22,7 +22,7 @@ int main() {
 
   for (unsigned int i = 0; i < n * n; i++) {
     Ap[i] = dis(gen);
-    Bp[i] = Ap[i];
+    Bp[i] = dis(gen);
 
     A[i] = Ap[i];
     B[i] = Bp[i];
