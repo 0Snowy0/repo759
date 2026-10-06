@@ -33,4 +33,6 @@ int main (int argc, char *argv[]) {
       mask[i * 3 + j] = dis1(gen);
     }
   }
+
+  
 }
