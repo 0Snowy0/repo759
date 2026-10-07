@@ -3,7 +3,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
  
 t, ms = [], []
-with open("times.txt") as f:
+with open("times1.txt") as f:
   for line in f:
     a, b = line.split()
     t.append(int(a)); ms.append(float(b))

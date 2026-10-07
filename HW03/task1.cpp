@@ -33,7 +33,12 @@ int main (int argc, char *argv[]) {
   const auto end = std::chrono::high_resolution_clock::now();
   const std::chrono::duration<double, std::milli> elapsed = end - start;
 
-  std::cout << C[n * n - 1] << std::endl;
   std::cout << C[0] << std::endl;
+  std::cout << C[n * n - 1] << std::endl;
   std::cout << elapsed.count() << std::endl;
+
+  delete[] A;
+  delete[] B;
+  delete[] C;
+  return 0;
 }

@@ -9,11 +9,11 @@
 
 cd "$SLURM_SUBMIT_DIR" || exit
  
-g++ task1.cpp matmul.cpp -Wall -O3 -std=c++17 -o task1 -fopenmp
- 
-# times1.txt gets one "t time_ms" line per thread count
-rm -f times1.txt
+g++ task2.cpp convolution.cpp -Wall -O3 -std=c++17 -o task2 -fopenmp
+
+# times2.txt gets one "t time_ms" line per thread count
+rm -f times2.txt
 for t in $(seq 1 20); do
-  ms=$(./task1 1024 "$t" | tail -n 1)
-  echo "$t $ms" >> times1.txt
+  ms=$(./task2 1024 "$t" | tail -n 1)
+  echo "$t $ms" >> times2.txt
 done

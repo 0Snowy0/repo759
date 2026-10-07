@@ -34,5 +34,19 @@ int main (int argc, char *argv[]) {
     }
   }
 
-  
+  float *output = new float[n*n];
+
+  const auto start = std::chrono::high_resolution_clock::now();
+  convolve(image, output, n, mask, 3);
+  const auto end = std::chrono::high_resolution_clock::now();
+  const std::chrono::duration<double, std::milli> elapsed = end - start;
+
+  std::cout << output[0] << std::endl;
+  std::cout << output[n * n - 1] << std::endl;
+  std::cout << elapsed.count() << std::endl;
+
+  delete[] image;
+  delete[] mask;
+  delete[] output;
+  return 0;
 }
