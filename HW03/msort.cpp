@@ -15,6 +15,7 @@
 void recurse(int* arr, std::size_t i, std::size_t j, std::size_t threshold) {
   // check if parallel needed
   if (j - i <= threshold) {
+    // TODO: are we allowed to use this?
     std::sort(arr + i, arr + j);
     return;
   }
@@ -27,6 +28,7 @@ void recurse(int* arr, std::size_t i, std::size_t j, std::size_t threshold) {
   recurse(arr, mid, j, threshold);
 
   #pragma omp taskwait
+  // TODO: are we allowed to do this
   std::inplace_merge(arr + i, arr + mid, arr + j);
 }
 
