@@ -25,7 +25,7 @@ int main (int argc, char *argv[]) {
     B[i] = dis(gen);
   }
 
-  float* C = new float[n * n];
+  float* C = new float[n * n]();
   omp_set_num_threads(t);
 
   const auto start = std::chrono::high_resolution_clock::now();

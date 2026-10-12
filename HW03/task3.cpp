@@ -12,15 +12,16 @@ int main (int argc, char *argv[]) {
 
   std::size_t n = std::strtoull(argv[1], nullptr, 10);
   const int t = std::atoi(argv[2]);
-  std::size_t ts = std::strtoull(argv[4], nullptr, 10);
+  std::size_t ts = std::strtoull(argv[3], nullptr, 10);
 
   if (n < 1 || t < 1 || t > 20 || ts < 1) {
     std::cerr << "Need <number> >=1, 1 <= <thread> <= 20, and <threshold> >=1" << std::endl;
+    return 1;
   }
 
   std::random_device rd;
   std::mt19937 gen(rd());
-  std::uniform_real_distribution<float> dis(-1000, 1000);
+  std::uniform_int_distribution<int> dis(-1000, 1000);
 
   int *arr = new int[n];
   for (std::size_t i = 0; i < n; i++) arr[i] = dis(gen);

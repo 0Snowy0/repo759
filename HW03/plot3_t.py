@@ -10,10 +10,10 @@ def load(path):
             x.append(int(a)); y.append(float(b))
     return x, y
  
-# time vs ts, linear (y) - log (x)
+# time vs ts, linear - linear
 ts, ms = load("times_t.txt")
 plt.figure(figsize=(6, 4))
-plt.semilogx(ts, ms, marker="o")
+plt.plot(ts, ms, marker="o")
 plt.xlabel("Number of threads t")
 plt.ylabel("msort time (ms)")
 plt.title("msort time vs. threads (n = 10^6)")

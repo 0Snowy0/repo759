@@ -12,6 +12,7 @@ int main (int argc, char *argv[]) {
 
   std::size_t n = std::strtoull(argv[1], nullptr, 10);
   const int t = std::atoi(argv[2]);
+  omp_set_num_threads(t);
 
   std::random_device rd;
   std::mt19937 gen(rd());

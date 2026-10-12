@@ -26,6 +26,7 @@ void convolve(const float *image, float *output, std::size_t n, const float *mas
     const std::ptrdiff_t M = static_cast<std::ptrdiff_t>(m);
     const std::ptrdiff_t halfM = (M - 1) / 2;
 
+    #pragma omp parallel for
     for (std::ptrdiff_t x = 0; x < N; x++) {
         for (std::ptrdiff_t y = 0; y < N; y++) {
             float sum = 0.0f;
