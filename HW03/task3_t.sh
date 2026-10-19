@@ -9,8 +9,8 @@
 
 cd "$SLURM_SUBMIT_DIR" || exit
 
-# best ts comes from task3_ts.sh (best_ts.txt), or pass one yourself: sbatch task3_t.sh 256
-TS=${1:-$(cat best_ts.txt)}
+# best ts from the task3_ts sweep (lowest time in times_ts.txt)
+TS=1024
 
 g++ task3.cpp msort.cpp -Wall -O3 -std=c++17 -o task3 -fopenmp
 

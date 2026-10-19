@@ -19,6 +19,7 @@ plt.ylabel("msort time (ms)")
 plt.title("msort time vs. threshold (n = 10^6, t = 8)")
 plt.grid(True)
 plt.tight_layout()
+plt.xticks(ts, [str(v) for v in ts])
 plt.savefig("task3_ts.pdf")
 best = ts[ms.index(min(ms))]
 print("best ts =", best)
