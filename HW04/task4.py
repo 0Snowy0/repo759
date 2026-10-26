@@ -5,7 +5,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 df = pd.read_csv("task4_times.csv")
-mean = df.groupby(["schedule", "threads"], as_index=False)["time_ms"].mean()
+mean = df.groupby(["schedule", "threads"], as_index=False)["time_ms"].min()
 
 schedules = ["static", "dynamic", "guided"]
 fig, axes = plt.subplots(1, 3, figsize=(15, 4.5), sharey=True)
