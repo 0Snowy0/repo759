@@ -11,7 +11,7 @@ g++ task3.cpp -Wall -O3 -std=c++17 -o task3 -fopenmp
 N=100
 T=100
 
-OUT=task4.cvs
+OUT=task4.csv
 echo "schedule,threads,rep,time_ms" > $OUT
 
 for sched in static dynamic guided; do
