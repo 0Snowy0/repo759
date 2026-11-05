@@ -1,5 +1,6 @@
 #include <cuda.h>
 #include <iostream>
+#include <cstdio>
 
 __global__ void task1Kernal() {
   int a = threadIdx.x;
@@ -13,7 +14,7 @@ __global__ void task1Kernal() {
 }
 
 int main () {
-  task1Kernal<<1,8>>();
+  task1Kernal<<<1,8>>>();
   cudaDeviceSynchronize();
   return 0;
 }

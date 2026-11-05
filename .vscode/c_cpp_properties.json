@@ -1,10 +1,24 @@
 {
     "configurations": [
         {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${env:CUDA_PATH}/include",
+                "${workspaceFolder}/.vscode/cuda-stub"
+            ],
+            "defines": [],
+            "compilerPath": "C:/msys64/ucrt64/bin/g++.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "windows-msvc-x64"
+        },
+        {
             "name": "Mac",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/opt/homebrew/opt/libomp/include"
+                "/opt/homebrew/opt/libomp/include",
+                "${workspaceFolder}/.vscode/cuda-stub"
             ],
             "defines": [],
             "macFrameworkPath": [
