@@ -1,20 +1,19 @@
-#include <cuda.h>
-#include <iostream>
+#include <cuda_runtime.h>
 #include <cstdio>
 
-__global__ void task1Kernal() {
-  int a = threadIdx.x;
-  int b = 1;
+__global__ void task1Kernel() {
+    int a = threadIdx.x + 1;
+    int b = 1;
 
-  for (int i = a; i > 1; i++) {
-    b *= i;
-  }
+    for (int i = 2; i <= a; ++i) {
+        b *= i;
+    }
 
-  printf("%d! = %d\n", a, b);
+    printf("%d!=%d\n", a, b);
 }
 
-int main () {
-  task1Kernal<<<1,8>>>();
-  cudaDeviceSynchronize();
-  return 0;
+int main() {
+    task1Kernel<<<1, 8>>>();
+    cudaDeviceSynchronize();
+    return 0;
 }
