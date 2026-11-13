@@ -71,6 +71,11 @@ int main(int argc, char *argv[]) {
 
   unsigned int blocks = (n + threadsPerBlock - 1) / threadsPerBlock;
 
+  // Untimed warm-up: n = 0 so the guard in vscale writes nothing. This pays
+  // the one-time CUDA startup cost before the timer starts.
+  vscale<<<1, threadsPerBlock>>>(dA, dB, 0);
+  checkCuda(cudaDeviceSynchronize(), "warm-up");
+
   cudaEvent_t start, stop;
   checkCuda(cudaEventCreate(&start), "create start event");
   checkCuda(cudaEventCreate(&stop), "create stop event");
