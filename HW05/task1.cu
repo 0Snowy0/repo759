@@ -9,7 +9,7 @@ __global__ void task1Kernel() {
         b *= i;
     }
 
-    printf("%d!=%d\n", a, b);
+    std::printf("%d!=%d\n", a, b);
 }
 
 int main() {

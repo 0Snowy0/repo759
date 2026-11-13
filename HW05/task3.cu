@@ -69,4 +69,30 @@ int main(int argc, char *argv[]) {
   checkCuda(cudaMemcpy(dA, a.data(), n * sizeof(float), cudaMemcpyHostToDevice), "copy a to device");
   checkCuda(cudaMemcpy(dB, b.data(), n * sizeof(float), cudaMemcpyHostToDevice), "copy b to device");
 
-  unsigned
+  unsigned int blocks = (n + threadsPerBlock - 1) / threadsPerBlock;
+
+  cudaEvent_t start, stop;
+  checkCuda(cudaEventCreate(&start), "create start event");
+  checkCuda(cudaEventCreate(&stop), "create stop event");
+
+  checkCuda(cudaEventRecord(start), "record start event");
+  vscale<<<blocks, threadsPerBlock>>>(dA, dB, n);
+  checkCuda(cudaGetLastError(), "vscale launch");
+  checkCuda(cudaEventRecord(stop), "record stop event");
+  checkCuda(cudaEventSynchronize(stop), "synchronize stop event");
+
+  float ms = 0.0f;
+  checkCuda(cudaEventElapsedTime(&ms, start, stop), "elapsed time");
+
+  checkCuda(cudaMemcpy(b.data(), dB, n * sizeof(float), cudaMemcpyDeviceToHost), "copy b to host");
+
+  std::cout << ms << std::endl;
+  std::cout << b[0] << std::endl;
+  std::cout << b[n - 1] << std::endl;
+
+  cudaEventDestroy(start);
+  cudaEventDestroy(stop);
+  cudaFree(dA);
+  cudaFree(dB);
+  return 0;
+}
